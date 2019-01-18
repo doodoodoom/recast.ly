@@ -20,6 +20,7 @@ import VideoList from './VideoList.js';
 import VideoPlayer from './VideoPlayer.js';
 import Search from './Search.js';
 import exampleVideoData from '/src/data/exampleVideoData.js';
+import searchYouTube from '/src/lib/searchYouTube.js';
 
 class App extends React.Component {
   constructor (props) {
@@ -30,9 +31,28 @@ class App extends React.Component {
     };
   }
 
+  //review componentDidMount and getVideos
+  componentDidMount() {
+    this.getVideos('Overwatch');
+  }
+
   onEntryClick(selectedVideo) {
     this.setState({
       currentVideo: selectedVideo
+    });
+  }
+
+  getVideos(query) {
+    var options = {
+      key: this.props.API_KEY,
+      query: query
+    };
+
+    this.props.searchYouTube(options, (videos) => {
+      this.setState({
+        videos: videos,
+        currentVideo: videos[0]
+      });
     });
   }
 
