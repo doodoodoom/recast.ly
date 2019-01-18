@@ -34,7 +34,7 @@ class App extends React.Component {
     this.setState({
       currentVideo: selectedVideo
     });
-  };
+  }
 
   render() {
     const { currentVideo, listedVideos } = this.state;
