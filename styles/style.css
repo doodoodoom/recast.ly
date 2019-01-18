@@ -74,6 +74,7 @@ body {
 .video-list-entry-detail {
   font-size: 12px;
   color: #999;
+  overflow: hidden;
 }
 
 .loading {
