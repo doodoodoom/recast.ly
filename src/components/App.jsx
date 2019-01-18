@@ -30,6 +30,12 @@ class App extends React.Component {
     };
   }
 
+  onEntryClick(selectedVideo) {
+    this.setState({
+      currentVideo: selectedVideo
+    });
+  };
+
   render() {
     const { currentVideo, listedVideos } = this.state;
 
@@ -45,7 +51,7 @@ class App extends React.Component {
             <VideoPlayer video={currentVideo}/>
           </div>
           <div className="col-md-5">
-            <VideoList videos={listedVideos}/>
+            <VideoList onEntryClick={this.onEntryClick.bind(this)} videos={listedVideos}/>
           </div>
         </div>
       </div>
